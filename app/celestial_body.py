@@ -10,7 +10,14 @@ class CelestialBody(CelestialBodyBase):
     def __init__(self, canvas, body_base: CelestialBodyBase) -> None:
         super().__init__(body_base.name, body_base.r_i, body_base.v_i, body_base.mass, body_base.color)
         self.canvas = canvas
-        self._random_init_2d()        
+        self._random_init_2d()
+
+        self.body = self.canvas.create_oval(0, 0, 0, 0, fill=self.color)
+        self.label = canvas.create_text(0, -15, text=self.name, fill="white")
+
+    def delete(self):
+        self.canvas.delete(self.body)
+        self.canvas.delete(self.label)
 
     def _random_init_2d(self):
         angle = np.random.uniform(0, 2 * np.pi)
@@ -48,6 +55,7 @@ class CelestialBody(CelestialBodyBase):
         dx, dy = self._adapt_pos_to_window(dx_pos, dy_pos)
 
         self.canvas.move(self.body, dx, dy)
+        self.canvas.move(self.label, dx, dy)
 
         self.x += dx
         self.y += dy
