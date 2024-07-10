@@ -101,7 +101,6 @@ class CelestialApp(tk.Tk):
     def animate(self):
         if self.simulation_running:
             for body in self.bodies:
-                if not body.name=="Sun":
-                    body.move(self.bodies)
-                    
+                body.move(self.bodies)
+
             self.after(int(50 / self.time_speed_var.get()), self.animate)
