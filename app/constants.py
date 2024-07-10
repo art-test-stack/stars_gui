@@ -12,7 +12,7 @@ mass_earth = 5.9e24
 au = 149597870700.
 
 # Time diff (s)
-dt = 5e5
+dt = 5e7
 
 # Solar planets
 from dataclasses import dataclass
@@ -39,3 +39,15 @@ solar_planets = [
     CelestialBodyBase("Uranus", 19.21845 * au, 6796.7, 14.54 * mass_earth, "peach puff"),
     CelestialBodyBase("Neptune", 30.11039 * au, 5432.48, .0021 * mass_earth, color="purple"),
 ]
+
+import numpy as np
+
+random_objects = [
+    CelestialBodyBase(
+        name=id, 
+        r_i=np.random.uniform(.1 * au, 10. * au), 
+        v_i=np.random.uniform(500, 1_000),
+        mass=np.random.uniform(1e22, 1e24),
+        color="yellow"
+        )
+    for id in range(999)]

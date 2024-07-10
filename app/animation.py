@@ -1,8 +1,9 @@
 from app.celestial_body import CelestialBody
-from app.constants import CelestialBodyBase, solar_planets
+from app.constants import CelestialBodyBase, solar_planets, random_objects
 
 import tkinter as tk
 from copy import deepcopy
+
 
 class CelestialApp(tk.Tk):
     def __init__(self, init_mode: str = "solar_system", width: int = 600, height: int = 600, panel_width: int = 200):
@@ -19,7 +20,12 @@ class CelestialApp(tk.Tk):
         
         self.create_controls()
 
-        self.bodies = [] if not init_mode=="solar_system" else [CelestialBody(self.canvas, planet) for planet in solar_planets]
+        self.bodies = (
+            [CelestialBody(self.canvas, object) for object in solar_planets] 
+            if init_mode=="solar_system" else
+            [CelestialBody(self.canvas, object) for object in random_objects]
+            if init_mode=="random" else
+            [])
         self.scale_objects_to_window()
 
     def create_controls(self):
