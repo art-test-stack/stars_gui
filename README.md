@@ -65,7 +65,7 @@
 This project easily implement a resolution of Newton's gravitational law equation using Euler's method for a problem. For a defined number of celestial objects, the program compute the trajectory and provide a playful representation. The program also copute all the interactions between the different stars.
 
 
-It can handles different objects called `CelestialBody` int the code, with different positions from the middle, velocity, masses etc... All of the details are bellow in [Parameters part](#the-parameters).
+It can handles different objects called `CelestialBody` in the code, with different positions from the middle, velocity, masses etc... All of the details are bellow in [Parameters part](#the-parameters).
 
 ### Built With
 
