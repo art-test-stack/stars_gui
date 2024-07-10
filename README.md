@@ -168,7 +168,7 @@ python main.py
 After having followed every part above, `python` should open a window looking live the one bellow.
 
 <a href="https://github.com/art-test-stack/stars_gui" >
-    <img align="center" src="rsc/demo.jpg" alt="Logo" height="200" >
+    <img align="center" src="rsc/demo.jpg" alt="Logo" height="600" >
 </a>
 
 You can add some objects by giving them some particularities. By default, when you `start simulation`, it runs with all the planetaries of the solar system, plus the sun and the objects you added.
