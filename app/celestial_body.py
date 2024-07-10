@@ -13,12 +13,11 @@ class CelestialBody(CelestialBodyBase):
         self._random_init_2d()        
 
     def _random_init_2d(self):
-        angle = 2*np.pi # np.random.uniform(0, 2 * np.pi)
+        angle = np.random.uniform(0, 2 * np.pi)
 
         self.x_pos = self.r_i * np.cos(angle)
         self.y_pos = self.r_i * np.sin(angle)
         
-        # d_angle_i = np.sqrt(self.v_i ** 2 / self.r_i **2)
         self.v_x = - self.v_i * np.sin(angle)
         self.v_y = self.v_i * np.cos(angle)
 
@@ -29,13 +28,14 @@ class CelestialBody(CelestialBodyBase):
         self.width, self.height = width, height 
         self.max_radius = max_radius
         self.x, self.y = self._adapt_pos_to_window(self.x_pos, self.y_pos, translate=True)
-        size = 10
+        size = 10 if self.name == "Sun" else 5
         self.body = self.canvas.create_oval(self.x - size, self.y - size, self.x + size, self.y + size, fill=self.color)
 
     def _adapt_pos_to_window(self, x, y, translate=False):
         tr = 1 if translate else 0
-        x = (x / self.max_radius + tr) * self.height / 2
-        y = (y / self.max_radius + tr) * self.width / 2
+        dil = 5/4
+        x = (x / self.max_radius + dil * tr) * self.height / ((2 * dil)**tr)
+        y = (y / self.max_radius + dil * tr) * self.width / ((2 * dil)**tr)
         return x, y
 
     def move(self, bodies): 
@@ -48,7 +48,6 @@ class CelestialBody(CelestialBodyBase):
         dx, dy = self._adapt_pos_to_window(dx_pos, dy_pos)
 
         self.canvas.move(self.body, dx, dy)
-        print('dx, dy:', dx, dy)
 
         self.x += dx
         self.y += dy
@@ -61,25 +60,12 @@ class CelestialBody(CelestialBodyBase):
         self.ax, self.ay = .0, .0
 
         for body in bodies: 
-            # if not body.name == self.name:
-            #     dist_x = float(body.x_pos-self.x_pos) 
-            #     dist_y = float(body.y_pos-self.y_pos)
-            #     # print(((dist_x**2 + dist_y**2)**(3/2)) - np.sqrt((dist_x**2 + dist_y**2)**(3))) if not ((dist_x**2 + dist_y**2)**(3/2)) == np.sqrt((dist_x**2 + dist_y**2)**(3)) else None
-            #     d_acc = - G * body.mass / np.sqrt((dist_x**2 + dist_y**2)**(3))
-            #     self.ax = self.ax + d_acc * dist_x
-            #     self.ay = self.ay + d_acc * dist_y
-            
-            if body.name == "Sun":
-                dist_x = float(body.x_pos - self.x_pos) 
-                dist_y = float(body.y_pos - self.y_pos)
-                print('dist to sun', distance(self._adapt_pos_to_window(dist_x, dist_y)))
-                print('on x and y', self._adapt_pos_to_window(dist_x, dist_y))
-                # print(((dist_x**2 + dist_y**2)**(3/2)) - np.sqrt((dist_x**2 + dist_y**2)**(3))) if not ((dist_x**2 + dist_y**2)**(3/2)) == np.sqrt((dist_x**2 + dist_y**2)**(3)) else None
-                d_acc = - G * body.mass / np.sqrt((dist_x**2 + dist_y**2)**(3))
+            if not body.name == self.name:
+                dist_x = float(self.x_pos - body.x_pos) 
+                dist_y = float(self.y_pos - body.y_pos)
+                d_acc = - G * body.mass / (distance((dist_x, dist_y))**(3))
                 self.ax = self.ax + d_acc * dist_x
                 self.ay = self.ay + d_acc * dist_y
-        print('computed acc', self.ax, self.ay)
-        # return self.ax, self.ay
 
 def distance(pos):
     x, y = pos

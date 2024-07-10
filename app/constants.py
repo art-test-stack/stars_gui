@@ -1,18 +1,18 @@
 ## Gravity constants 
 eps = 1e-15
 # Sun mass
-Ms = 1.9e30
+mass_sun = 1.9e30
 # Universal gravity constant (kg^-1,m^3,s^-2)
 G = 6.67e-11 
 
 # Mass of Earth (kg)
-mT = 5.9e24 
+mass_earth = 5.9e24 
 
 # Astronomic unit
 au = 149597870700.
 
 # Time diff (s)
-dt = 1e5
+dt = 5e5
 
 # Solar planets
 from dataclasses import dataclass
@@ -26,14 +26,16 @@ class CelestialBodyBase:
     mass: float
     color: str
 
+# https://nssdc.gsfc.nasa.gov/planetary/factsheet/
+
 solar_planets = [
-    CelestialBodyBase("Sun", eps, 0, Ms, "yellow"),
+    CelestialBodyBase("Sun", eps, 0, mass_sun, "yellow"),
     CelestialBodyBase("Mercury", 0.39 * au, 47367, 3.3011e2, "forest green"),
-    # CelestialBodyBase("Venus", 0.723 * au, 35025, 0.815 * mT, "lawn green"),
-    # CelestialBodyBase("Earth", 1.524 * au, 47367, 1. * mT, "blue"),
-    # TODO: Check Mars initial cond
-    # CelestialBodyBase("Mars", 0.39 * au, 47367, 0.107 * mT, "red"),
-    # CelestialBodyBase("Jupiter", 5.202603 * au, 13058, 327.83 * mT, "orange"),
-    # CelestialBodyBase("Uranus", 9.554909 * au, 9640, 14.54 * mT),
-    CelestialBodyBase("Neptune", 30.11039 * au, 5432.48, .0021 * mT, color="purple"),
+    CelestialBodyBase("Venus", 0.723 * au, 35025, 0.815 * mass_earth, "lawn green"),
+    CelestialBodyBase("Earth", 1. * au, 29783, 1. * mass_earth, "blue"),
+    CelestialBodyBase("Mars", 1.524 * au, 24080.2, 0.107 * mass_earth, "red"),
+    CelestialBodyBase("Jupiter", 5.202603 * au, 13058, 327.83 * mass_earth, "orange"),
+    CelestialBodyBase("Saturn", 9.554909 * au, 9640, 95.16 * mass_earth, "DarkOrange2"),
+    CelestialBodyBase("Uranus", 19.21845 * au, 6796.7, 14.54 * mass_earth, "peach puff"),
+    CelestialBodyBase("Neptune", 30.11039 * au, 5432.48, .0021 * mass_earth, color="purple"),
 ]
