@@ -161,7 +161,7 @@ python main.py
 
 ## Usage
 
-This framework permits to easily see how the different bodies in a set of celestial bodies, for example the solar system, they influence others and how they influence the others. So, anyone who want to see, for example, how the solar system runs, or any other set of celestial bodies does, can use it as a first step to see how a little piece of our universe can work !
+This project permits to easily see how the different bodies in a set of celestial bodies, for example the solar system, how they influence the others and how they are influenced by them. So, anyone who want to see, for example, how the solar system runs, or any other set of celestial bodies does, can use it as a first step to see how a little piece of our universe can work !
 
 However, it is only good as a first step, the equations used here are very basic, even if they handdle a big variety of situations.
 
