@@ -17,7 +17,11 @@
 
   <p align="center">
     This project has to purpose to create an animation of celestial bodies and they gravitational interactions, according to Newton's law and Euler's resolution.
-    <br />
+
+    This project permits to easily see how the different bodies in a set of celestial bodies, for example the solar system, how they influence the others and how they are influenced by them. So, anyone who want to see, for example, how the solar system runs, or any other set of celestial bodies does, can use it as a first step to see how a little piece of our universe can work !
+
+    However, it is only good as a first step, the equations used here are very basic, even if they handdle a big variety of situations.
+  <br/>
     <a href="https://github.com/art-test-stack/stars_gui"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -161,10 +165,13 @@ python main.py
 
 ## Usage
 
-This project permits to easily see how the different bodies in a set of celestial bodies, for example the solar system, how they influence the others and how they are influenced by them. So, anyone who want to see, for example, how the solar system runs, or any other set of celestial bodies does, can use it as a first step to see how a little piece of our universe can work !
+After having followed every part above, `python` should open a window looking live the one bellow.
 
-However, it is only good as a first step, the equations used here are very basic, even if they handdle a big variety of situations.
+<a href="https://github.com/art-test-stack/stars_gui">
+    <video src="rsc/demo.mov" alt="Demo" height="400">
+</a>
 
+You can add some objects by giving them some particularities. By default, when you `start simulation`, it runs with all the planetaries of the solar system, plus the sun and the objects you added. 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
