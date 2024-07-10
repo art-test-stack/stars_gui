@@ -134,13 +134,13 @@ class CelestialBodyBase:
 
 According to Newton's law, for a set of $n$ celestial objects, we have the force applied to the $i$-th object given by:
 
-$$F_i = - Gm_i \sum_{j=1, j\neq i}^n \frac{m_j}{r^2}\vec{u_{ji}}$$
+$$F_i = - Gm_i \sum_{j=1, j\neq i}^n \frac{m_j}{r^2}\vec{u_{ij}}$$
 
 where,
 - $G$: is the universal gravitational constant
 - $m_i$: is the mass of the $i$-th object
 - $r$: is the distance between the two objects $j$ and $i$
-- $\vec{u_ji}$: is the unitar vector from $j$ to $i$
+- $\vec{u_{ij}}$: is the unitar vector from $i$ to $j$
 
 Then for evey object $i$, we compute its acceleration at time $t$, which is simply:
 
