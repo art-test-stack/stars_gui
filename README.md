@@ -17,10 +17,13 @@
 
   <p align="center">
     This project has to purpose to create an animation of celestial bodies and they gravitational interactions, according to Newton's law and Euler's resolution.
-
+  </p>
+  <p align="center">
     This project permits to easily see how the different bodies in a set of celestial bodies, for example the solar system, how they influence the others and how they are influenced by them. So, anyone who want to see, for example, how the solar system runs, or any other set of celestial bodies does, can use it as a first step to see how a little piece of our universe can work !
-
+  </p>
+  <p align="center">
     However, it is only good as a first step, the equations used here are very basic, even if they handdle a big variety of situations.
+  </p>
   <br/>
     <a href="https://github.com/art-test-stack/stars_gui"><strong>Explore the docs »</strong></a>
     <br />
