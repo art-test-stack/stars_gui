@@ -142,7 +142,7 @@ where,
 - $r$: is the distance between the two objects $j$ and $i$
 - $\vec{u_{ij}}$: is the unitar vector from $i$ to $j$
 
-Then for evey object $i$, we compute its acceleration at time $t$, which is simply:
+Then for evey object $i$, we compute its acceleration at time-step $t$, which is simply:
 
 $$a_i(t) = F_i(t) / m_i$$
 
@@ -151,13 +151,13 @@ Then, using Euler's resolution method, we have:
 $$dv_i(t) = a_i(t) \cdot dt$$
 $$dx_i(t) = dv_i(t) \cdot dt$$
 
-Hence, we can compute the new velocity: 
+Hence, we can compute the new velocity, the one at time $t+dt$: 
 
-$$v_i(t) := v_i(t) + dv_i(t)$$
+$$v_i(t + dt) := v_i(t) + dv_i(t)$$
 
 And the new position:
 
-$$x_i(t) := x_i(t) + dx_i(t)$$
+$$x_i(t + dt) := x_i(t) + dx_i(t)$$
 
 Notice that the computation have been made not considering the type of the referential. In the program, everything are compute in an euclidian one.
 
