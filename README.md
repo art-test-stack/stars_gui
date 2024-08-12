@@ -149,6 +149,7 @@ $$a_i(t) = F_i(t) / m_i$$
 Then, using Euler's resolution method, we have:
 
 $$dv_i(t) = a_i(t) \cdot dt$$
+
 $$dx_i(t) = dv_i(t) \cdot dt$$
 
 Hence, we can compute the new velocity, the one at time $t+dt$: 
