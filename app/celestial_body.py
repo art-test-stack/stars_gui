@@ -1,6 +1,6 @@
 from app.constants import *
 
-from typing import List
+from typing import Tuple
 from dataclasses import dataclass
 
 import tkinter as tk
@@ -9,18 +9,24 @@ import numpy as np
 
 class CelestialBody(CelestialBodyBase):
     def __init__(self, canvas: tk.Canvas, body_base: CelestialBodyBase) -> None:
-        super().__init__(body_base.name, body_base.r_i, body_base.v_i, body_base.mass, body_base.color)
+        super().__init__(
+            body_base.name, 
+            body_base.r_i, 
+            body_base.v_i, 
+            body_base.mass, 
+            body_base.color
+        )
         self.canvas = canvas
         self._random_init_2d()
 
         self.body = self.canvas.create_oval(0, 0, 0, 0, fill=self.color)
         self.label = canvas.create_text(0, -15, text=self.name, fill="white")
 
-    def delete(self):
+    def delete(self) -> None:
         self.canvas.delete(self.body)
         self.canvas.delete(self.label)
 
-    def _random_init_2d(self):
+    def _random_init_2d(self) -> None:
         angle = np.random.uniform(0, 2 * np.pi)
 
         self.x_pos = self.r_i * np.cos(angle)
@@ -32,14 +38,14 @@ class CelestialBody(CelestialBodyBase):
         self.ax = .0
         self.ay = .0
     
-    def adapt_to_window(self, width, height, max_radius):
+    def adapt_to_window(self, width, height, max_radius) -> None:
         self.width, self.height = width, height 
         self.max_radius = max_radius
         self.x, self.y = self._adapt_pos_to_window(self.x_pos, self.y_pos, translate=True)
         size = 10 if self.name == "Sun" else 5
         self.body = self.canvas.create_oval(self.x - size, self.y - size, self.x + size, self.y + size, fill=self.color)
 
-    def _adapt_pos_to_window(self, x, y, translate=False):
+    def _adapt_pos_to_window(self, x, y, translate=False) -> Tuple[float, float]:
         tr = 1 if translate else 0
         dil = 5/4
         x = (x / self.max_radius + dil * tr) * self.height / ((2 * dil)**tr)
@@ -65,7 +71,7 @@ class CelestialBody(CelestialBodyBase):
         self.y_pos += dy_pos
 
 
-    def dynamic(self, bodies):
+    def dynamic(self, bodies) -> None:
         self.ax, self.ay = .0, .0
 
         for body in bodies: 
@@ -76,6 +82,6 @@ class CelestialBody(CelestialBodyBase):
                 self.ax = self.ax + d_acc * dist_x
                 self.ay = self.ay + d_acc * dist_y
 
-def distance(pos):
+def distance(pos) -> Tuple[float, float]:
     x, y = pos
     return np.sqrt(x**2 + y**2)

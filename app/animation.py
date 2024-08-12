@@ -12,7 +12,7 @@ class CelestialApp(tk.Tk):
             width: int = 600, 
             height: int = 600, 
             panel_width: int = 200
-        ):
+        ) -> None:
         super().__init__()
         self.title("Celestial Movement Simulator")
         self.geometry(f"{width + panel_width}x{height}")
@@ -34,7 +34,7 @@ class CelestialApp(tk.Tk):
             [])
         self.scale_objects_to_window()
 
-    def create_controls(self):
+    def create_controls(self) -> None:
         self.create_label_entry("Name", "name")
 
         self.create_label_entry("Initial Radius", "r_i")
@@ -60,7 +60,7 @@ class CelestialApp(tk.Tk):
         restart_button = tk.Button(self.control_frame, text="Restart Simulation", command=self.restart_simulation)
         restart_button.pack(pady=10)
 
-    def create_label_entry(self, label_text, var_name):
+    def create_label_entry(self, label_text, var_name) -> None:
         label = tk.Label(self.control_frame, text=label_text)
         label.pack(pady=5)
         
@@ -70,7 +70,7 @@ class CelestialApp(tk.Tk):
         entry = tk.Entry(self.control_frame, textvariable=entry_var)
         entry.pack(pady=5)
 
-    def add_object(self):
+    def add_object(self) -> None:
         try:
             name = float(self.name_var.get())
             r_i = float(self.r_i_var.get())
@@ -85,7 +85,7 @@ class CelestialApp(tk.Tk):
         except ValueError:
             print("Invalid input, please enter numerical values for positions, size, and velocity.")
 
-    def start_simulation(self):
+    def start_simulation(self) -> None:
         self.simulation_running = True
 
         # self.bodies_copy = deepcopy(self.bodies)
@@ -93,24 +93,24 @@ class CelestialApp(tk.Tk):
         self.scale_objects_to_window()
         self.animate()
     
-    def clear_canvas(self):
+    def clear_canvas(self) -> None:
         for body in self.bodies:
             body.delete()
 
-    def scale_objects_to_window(self):
+    def scale_objects_to_window(self) -> None:
         self.clear_canvas()
         max_r_i = max([body.r_i for body in self.bodies])
         for body in self.bodies:
             body.adapt_to_window(self.width, self.height, max_r_i)
         
-    def pause_simulation(self):
+    def pause_simulation(self) -> None:
         self.simulation_running = False
 
-    def restart_simulation(self):
+    def restart_simulation(self) -> None:
         self.simulation_running = False
         self.start_simulation()
 
-    def animate(self):
+    def animate(self) -> None:
         if self.simulation_running:
             for body in self.bodies:
                 body.move(self.bodies)
