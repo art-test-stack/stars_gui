@@ -6,7 +6,13 @@ from copy import deepcopy
 
 
 class CelestialApp(tk.Tk):
-    def __init__(self, init_mode: str = "solar_system", width: int = 600, height: int = 600, panel_width: int = 200):
+    def __init__(
+            self, 
+            init_mode: str = "solar_system", 
+            width: int = 600, 
+            height: int = 600, 
+            panel_width: int = 200
+        ):
         super().__init__()
         self.title("Celestial Movement Simulator")
         self.geometry(f"{width + panel_width}x{height}")

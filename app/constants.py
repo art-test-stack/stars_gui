@@ -22,7 +22,7 @@ from typing import List
 class CelestialBodyBase:
     name: str 
     r_i : float
-    v_i : List[float]
+    v_i : float
     mass: float
     color: str
 
@@ -49,5 +49,6 @@ random_objects = [
         v_i=np.random.uniform(500, 1_000),
         mass=np.random.uniform(1e22, 1e24),
         color="yellow"
-        )
-    for id in range(999)]
+    )
+    for id in range(999)
+]

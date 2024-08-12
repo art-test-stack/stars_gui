@@ -3,11 +3,12 @@ from app.constants import *
 from typing import List
 from dataclasses import dataclass
 
+import tkinter as tk
 import numpy as np
 
 
 class CelestialBody(CelestialBodyBase):
-    def __init__(self, canvas, body_base: CelestialBodyBase) -> None:
+    def __init__(self, canvas: tk.Canvas, body_base: CelestialBodyBase) -> None:
         super().__init__(body_base.name, body_base.r_i, body_base.v_i, body_base.mass, body_base.color)
         self.canvas = canvas
         self._random_init_2d()

@@ -10,6 +10,7 @@ training_checkpoints/
 *.png
 tf_gan_images/
 
+*/.DS_Store
 # C extensions
 *.so
 
